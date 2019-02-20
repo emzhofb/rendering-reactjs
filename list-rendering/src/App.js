@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios'
+
 
 class App extends Component {
 
@@ -11,7 +13,8 @@ class App extends Component {
         {id: 2, nama: 'Zoro', kelas: 'Vice-Captain'},
         {id: 3, nama: 'Sanji', kelas: 'Chef'},
         {id: 4, nama: 'Jinbei', kelas: 'Skipper'}
-      ]
+      ],
+      planets: []
     }
   }
 
@@ -19,24 +22,29 @@ class App extends Component {
     this.setState({[element.target.name]: element.target.value})
   }
 
+  _handleClick = () => {
+    axios.get("https://swapi.co/api/planets/").then((res) => {
+      this.setState({planets: res.data.results})
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   render() {
     return (
       <div>
-        <h1>List Monster</h1>
+        <button onClick={this._handleClick} >Tampilkan data planet</button>
+        <h1>List Data Planet Starwars</h1>
         <table>
           <thead>
-            <th>Id</th>
-            <th>Nama</th>
-            <th>Posisi</th>
+            <th>Nama Planet</th>
           </thead>
           <tbody>
             {
-              this.state.monster.map((data, index) => {
+              this.state.planets.map((data, index) => {
                 return (
                   <tr key={index}>
-                    <td> { data.id } </td>
-                    <td> { data.nama } </td>
-                    <td> { data.kelas } </td>
+                    <td> { data.name } </td>
                   </tr>
                 )
               })
