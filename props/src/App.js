@@ -10,7 +10,8 @@ class App extends Component {
         {id: 2, nama: 'Zoro', kuat: 'Bushoshoku'},
         {id: 3, nama: 'Sanji', kuat: 'Kenbunshoku'},
         {id: 4, nama: 'Jinbei', kuat: 'Gyojin Karate'}
-      ]
+      ],
+      judul: 'One Piece'
     }
   }
 
@@ -20,6 +21,7 @@ class App extends Component {
         <h1>List Data Monster</h1>
         <Table 
           mugiwara = {this.state.mugiwara}
+          judulBaru = {this.state.judul}
         />
       </div>
     );

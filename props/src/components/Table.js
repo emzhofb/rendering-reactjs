@@ -6,7 +6,7 @@ class Table extends Component {
         return (
             <table>
               <thead>
-                <th>Nama</th>
+                <th>{this.props.judulBaru}</th>
               </thead>
               <tbody>
                 {
